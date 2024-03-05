@@ -1,1 +1,1 @@
-# bigdata-class
+# 빅데이터설계및활용
