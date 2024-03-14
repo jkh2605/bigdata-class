@@ -1,20 +1,11 @@
-from collections import Counter
+a = [2, 3, 4, 5, 6]
+new_list = []
 
-def find_most_common_and_max(tup):
-    # 튜플 내 요소들의 빈도수를 계산
-    counter = Counter(tup)
-    # 가장 많이 나타나는 요소들의 빈도수를 찾음
-    most_common_count = counter.most_common(1)[0][1]
-    # 가장 많이 나타나는 요소들을 모아둠
-    most_common_elements = [element for element, count in counter.items() if count == most_common_count]
-    # 가장 많이 나타나는 요소들 중에서 가장 큰 값을 찾음
-    max_value = max(most_common_elements)
-    
-    return max_value
+# 리스트의 끝에서부터 pop하여 새로운 리스트에 추가하여 역순으로 만듦
+for _ in range(len(a)):
+    new_list.append(a.pop())
 
-# 예시 튜플
-tup = (3, 9, 3, 5, 2, 9, 9)
+# 새로운 리스트를 기존 리스트에 복사
+a[:] = new_list
 
-# 결과 출력
-result = find_most_common_and_max(tup)
-print("가장 많이 나타나는 요소 중 가장 큰 값:", result)
+print(a)  # 결과 출력: [6, 5, 4, 3, 2]
