@@ -1,1 +1,20 @@
+from collections import Counter
 
+def find_most_common_and_max(tup):
+    # 튜플 내 요소들의 빈도수를 계산
+    counter = Counter(tup)
+    # 가장 많이 나타나는 요소들의 빈도수를 찾음
+    most_common_count = counter.most_common(1)[0][1]
+    # 가장 많이 나타나는 요소들을 모아둠
+    most_common_elements = [element for element, count in counter.items() if count == most_common_count]
+    # 가장 많이 나타나는 요소들 중에서 가장 큰 값을 찾음
+    max_value = max(most_common_elements)
+    
+    return max_value
+
+# 예시 튜플
+tup = (3, 9, 3, 5, 2, 9, 9)
+
+# 결과 출력
+result = find_most_common_and_max(tup)
+print("가장 많이 나타나는 요소 중 가장 큰 값:", result)
