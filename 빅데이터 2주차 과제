@@ -1,0 +1,17 @@
+# 메뉴와 가격을 딕셔너리로 정의
+menu = {
+    "Americano": 3000,
+    "Ice Americano": 3500,
+    "Cappuccino": 4000,
+    "Caffe Latte": 4500,
+    "Espresso": 3600
+}
+
+# 사용자로부터 주문 입력 받기
+order = input("주문하세요: ")
+
+# 주문한 항목이 메뉴에 있는지 확인하고, 가격 출력
+if order in menu:
+    print("주문하신", order, "의 가격은", menu[order], "원입니다.")
+else:
+    print("주문하신 항목이 메뉴에 없습니다.")
