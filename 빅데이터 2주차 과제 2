@@ -13,7 +13,7 @@ def find_most_common_and_max(tup):
     return max_value
 
 # 예시 튜플
-tup = (3, 9, 3, 5, 2, 9, 9)
+tup = (1, 2, 5, 4, 3, 2, 1, 4, 7, 8, 9, 9, 3, 7, 3)
 
 # 결과 출력
 result = find_most_common_and_max(tup)
