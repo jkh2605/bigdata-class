@@ -1,0 +1,7 @@
+def most_frequent_element(test_tup):
+  res = max(set(test_tup), key=test_tup.count)
+  return (res)
+
+test_tup = (1, 2, 5, 4, 3, 2, 1, 4, 7, 8, 9, 9, 3, 7, 3)
+
+print("최빈값 요소 : " + str(most_frequent_element(test_tup)))
