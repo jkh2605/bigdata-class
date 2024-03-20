@@ -1,0 +1,14 @@
+s_list = ['abc', 'bcd', 'opq', 'bcdefg', 'cddc', 'abba']
+
+# 문자열 길이에 따라 정렬
+s_list.sort(key=len)
+
+shortest_len = len(s_list[0])
+shortest_str_list = []
+
+# 길이가 가장 짧은 문자열 3개 추출
+for i in range(len(s_list)):
+  if len(s_list[i]) > shortest_len:
+    break
+  elif len(s_list[i]) == shortest_len:
+    shortest_str_list.append(s_list[i])
