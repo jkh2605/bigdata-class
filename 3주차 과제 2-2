@@ -1,0 +1,14 @@
+menu = {
+    "Americano": 3000,
+    "Ice Americano": 3500,
+    "Cappuccino": 4000,
+    "Caffe Latte": 4500,
+    "Espresso": 3600,
+}
+
+order = input("주문하신 메뉴를 입력하세요: ")
+
+if order in menu:
+  print(f"{order}는 메뉴에 있습니다. 가격은 {menu[order]}원입니다.")
+else:
+  print(f"{order}는 메뉴에 없습니다.")
