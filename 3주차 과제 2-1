@@ -1,0 +1,9 @@
+menu = {
+    "Americano": 3000,
+    "Ice Americano": 3500,
+    "Cappuccino": 4000,
+    "Caffe Latte": 4500,
+    "Espresso": 3600,
+}
+for key in menu:
+  print(f"{key}: {menu[key]}원")
