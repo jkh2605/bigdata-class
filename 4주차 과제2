@@ -1,0 +1,28 @@
+def get_min_and_max(numbers):
+  """
+  리스트에서 최대값과 최소값을 찾는 함수
+
+  Args:
+    numbers: 리스트
+
+  Returns:
+    최대값, 최소값
+  """
+
+  min_value = numbers[0]
+  max_value = numbers[0]
+
+  for number in numbers:
+    if number < min_value:
+      min_value = number
+    elif number > max_value:
+      max_value = number
+
+  return max_value, min_value
+
+# 테스트 코드
+numbers = (82, 27, 90, 30, 87, 56)
+max_value, min_value = get_min_and_max(numbers)
+
+print(f"최대값: {max_value}")
+print(f"최소값: {min_value}")
