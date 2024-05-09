@@ -1,0 +1,27 @@
+import pandas as pd
+
+import xml.etree.ElementTree as ET
+
+xml_file_path = "/content/xmlData/book.xml"
+
+tree = ET.parse(xml_file_path)
+
+root = tree.getroot()
+
+elements = root.findall('book')
+
+df = pd.DataFrame(columns=['title', 'author', 'price', 'genre'])
+
+for element in elements:
+    row = {
+        'title': element.find('title').text,
+        'author': element.find('author').text,
+        'price': float(element.find('price').text),
+        'genre': element.find('genre').text,
+    }
+
+    new_df = pd.DataFrame([row], columns=df.columns)
+
+    df = pd.concat([df, new_df], ignore_index=True)
+
+print(df.head())
