@@ -1,0 +1,8 @@
+import pandas as pd
+import json
+json_file_path="/content/jsonData/custom.json"
+with open(json_file_path,'r', encoding='utf-8') as f:
+    json_data = json.load(f)
+df=pd.DataFrame(json_data)
+
+print(df.head())
