@@ -1,0 +1,61 @@
+import pandas as pd
+file='./owid-covid-data.csv'
+wanted_df=pd.read_csv(file)
+wanted_df.info()
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+locations=wanted_df['location']
+print(locations)
+
+locations.unique()
+
+fra_df=wanted_df[wanted_df.location =='France']
+fra_df.head()
+
+kor_df=wanted_df[wanted_df.location =='South Korea']
+kor_df.head()
+
+kor_date_index_df=kor_df.set_index('date')
+kor_date_index_df.head()
+
+fra_date_index_df=fra_df.set_index('date')
+fra_date_index_df.head()
+
+fra_total_cases=fra_date_index_df['total_cases']
+fra_total_cases
+
+kor_total_cases=kor_date_index_df['total_cases']
+kor_total_cases
+
+fra_date_index_df.index
+
+target_df=pd.DataFrame({
+    'KOR' : kor_total_cases,
+    'FRA' : fra_total_cases
+  }, index = kor_date_index_df.index)
+target_df.head()
+
+target_df.plot.line()
+
+target_df['2021-01-01':'2022-04-30'].plot.line()
+
+fra_population=fra_date_index_df['population']['2020-01-22']
+print(fra_population)
+
+rate=round((fra_population/kor_population),2)
+rate
+
+target_wanted_df=pd.DataFrame({
+    'KOREA' : kor_total_cases*rate,
+    'FRANCE' : fra_total_cases
+  }, index = fra_date_index_df.index)
+target_wanted_df.iloc[50:56]
+
+target_wanted_df[:],plot.line(rot=45)
+
+target_df.plot.line()
+
+target_df['2021-01-22':'2022-04-30'].plot.line()
+
