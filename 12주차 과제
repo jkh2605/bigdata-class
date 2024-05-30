@@ -1,0 +1,65 @@
+from google.colab import drive
+import pandas as pd
+drive.mount('/content/drive')
+
+import pandas as pd
+data_ca = pd.read_csv('/content/drive/MyDrive/content/ca.csv')
+print('데이터 CA\n\n', data_ca.head(), '\n\n')
+data_tx = pd.read_csv('/content/drive/MyDrive/content/tx.csv')
+print('데이터 TX\n\n', data_tx.head(), '\n\n')
+data_va = pd.read_csv('/content/drive/MyDrive/content/va.csv')
+print('데이터 VA\n\n', data_va.head(), '\n\n')
+data_il = pd.read_csv('/content/drive/MyDrive/content/il.csv')
+print('데이터 IL\n\n', data_il.head(), '\n\n')
+data_wa = pd.read_csv('/content/drive/MyDrive/content/wa.csv')
+print('데이터 WA\n\n', data_wa.head(), '\n\n')
+
+#CA
+data_ca_total_cases = data_ca[['tot_cases', 'date_updated']]
+data_ca_dateindex = data_ca_total_cases.set_index('date_updated')
+print(data_ca_dateindex.head())
+
+#TX
+data_tx_total_cases = data_tx[['tot_cases', 'date_updated']]
+data_tx_dateindex = data_tx_total_cases.set_index('date_updated')
+print(data_tx_dateindex.head())
+
+#VA
+data_va_total_cases = data_va[['tot_cases', 'date_updated']]
+data_va_dateindex = data_va_total_cases.set_index('date_updated')
+print(data_va_dateindex.head())
+
+#IL
+data_il_total_cases = data_il[['tot_cases', 'date_updated']]
+data_il_dateindex = data_il_total_cases.set_index('date_updated')
+print(data_il_dateindex.head())
+
+#WA
+data_wa_total_cases = data_wa[['tot_cases', 'date_updated']]
+data_wa_dateindex = data_wa_total_cases.set_index('date_updated')
+print(data_wa_dateindex.head())
+
+ca_population = 39030000
+tx_population = 30030000
+va_population = 8684000
+il_population = 12580000
+wa_population = 671800
+usa_population = 333300000
+
+rate_ca = round((ca_population / usa_population), 3)
+rate_tx = round((tx_population / usa_population), 3)
+rate_va = round((va_population / usa_population), 3)
+rate_il = round((il_population / usa_population), 3)
+rate_wa = round((wa_population / usa_population), 3)
+
+print(rate_ca)
+print(rate_tx)
+print(rate_va)
+print(rate_il)
+print(rate_wa)
+
+final_df = pd.concat([data_ca_dateindex * rate_ca, data_tx_dateindex * rate_tx, data_va_dateindex * rate_va, data_il_dateindex * rate_il, data_wa_dateindex * rate_wa], axis = 1)
+final_df.columns = ['CALIFORNIA', 'TEXAS', 'VIRGINIA', 'ILLINOIS', 'WASHINGTON']
+final_df.head()
+
+final_df.plot.line(rot=45)
