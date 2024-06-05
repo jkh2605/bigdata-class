@@ -1,0 +1,39 @@
+import pandas as pd
+raw_data = pd.read_csv('./survey_results_public.csv')
+raw_data.info()
+
+target_data=raw_data[['Age','Country','LanguageHaveWorkedWith','LearnCode']]
+target_data.head()
+
+target_data['Age']
+target_data['Age'].drop_duplicates()
+
+size_by_age=target_data.groupby('Age').size()
+size_by_age
+
+size_by_country=target_data.groupby('Country').size()
+size_by_country
+
+size_by_age.plot.line(rot=45)
+
+size_by_age.plot.barh()
+
+size_by_age.index
+
+target_size_by_age=size_by_age.reindex(index=[
+    'Prefer not to say',
+    '65 years or older',
+    '55 - 64 years old',
+    '45 - 54 years old',
+    '35 - 44 years old',
+    '25 - 34 years old',
+    '18 - 24 years old',
+    'Under 18 years old'
+])
+target_size_by_age
+
+target_size_by_age.plot.barh()
+
+languages=target_data['LanguageHaveWorkedWith']
+languages.head()
+
